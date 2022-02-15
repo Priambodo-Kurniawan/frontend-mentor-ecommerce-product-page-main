@@ -1,0 +1,15 @@
+{
+  "name": "ecommerce-product-page-main",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --include-path scss scss/style.scss css/style.css",
+    "watch-scss": "nodemon -e scss -x \"npm run scss\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^7.0.1"
+  }
+}

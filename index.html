@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/css/uikit.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <title>Frontend Mentor | E-commerce product page</title>
+  </head>
+  <body>
+    <div class="uk-container">
+      <nav
+        class="uk-navbar-container uk-navbar-transparent uk-padding-remove"
+        uk-navbar
+      >
+        <div class="uk-navbar-left uk-visible@m">
+          <ul id="nav-container" class="uk-navbar-nav">
+            <li>
+              <a
+                class="uk-logo uk-padding-remove-horizontal uk-margin-medium-right"
+                href="#"
+              >
+                <img src="./images/logo.svg" alt="logo" />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="uk-navbar-left uk-hidden@m">
+          <div id="offcanvas-overlay" uk-offcanvas="overlay: true">
+            <div class="uk-offcanvas-bar">
+              <button
+                class="uk-offcanvas-close"
+                type="button"
+                uk-close
+              ></button>
+
+              <ul id="nav-container-mobile" class="uk-list"></ul>
+            </div>
+          </div>
+          <ul class="uk-navbar-nav">
+            <li>
+              <a
+                class="uk-padding-remove-horizontal uk-margin-right"
+                href="#"
+                uk-toggle="target: #offcanvas-overlay"
+              >
+                <img src="./images/icon-menu.svg" alt="menu" />
+              </a>
+            </li>
+            <li>
+              <a
+                class="uk-logo uk-padding-remove-horizontal uk-margin-medium-right"
+                href="#"
+              >
+                <img src="./images/logo.svg" alt="logo" />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">
+          <ul class="uk-navbar-nav">
+            <li>
+              <a href="#">
+                <div class="uk-positon-relative">
+                  <span id="total-cart-item" class="cart-count"></span>
+                  <img src="./images/icon-cart.svg" alt="cart" />
+                </div>
+              </a>
+              <div
+                class="uk-navbar-dropdown dropdown-cart"
+                id="dropdown-cart"
+                uk-dropdown="pos: bottom-justify"
+              >
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                  <li class="uk-nav-header">Cart</li>
+                  <li class="uk-nav-divider"></li>
+                </ul>
+                <div id="cart-empty-state" class="cart-empty-state">
+                  Your cart is empty.
+                </div>
+                <div id="cart-not-empty-state" class="cart-not-empty-state">
+                  <ul
+                    class="uk-nav uk-navbar-dropdown-nav"
+                    id="cart-container"
+                  ></ul>
+                  <button
+                    onclick="checkout()"
+                    class="uk-button uk-width-1-1 uk-button-primary"
+                  >
+                    Checkout
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a
+                class="uk-padding-remove-horizontal"
+                style="margin-left: 30px"
+                href="#"
+              >
+                <img
+                  width="50"
+                  src="./images/image-avatar.png"
+                  alt="image-avatar"
+                  class="image-avatar"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="uk-container container-content">
+      <div class="uk-visible@m uk-margin-large-top uk-padding-small"></div>
+      <section role="content">
+        <div class="uk-grid" uk-height-match="target: .uk-width-1-2@m">
+          <div class="uk-width-1-2@m">
+            <div
+              uk-slideshow="animation: push; autoplay-interval: 5000; ratio: 1:1;"
+              class="product-image"
+            >
+              <div class="position-relative">
+                <div class="nav-slider main-nav-slider">
+                  <a
+                    class="uk-position-center-left uk-position-small"
+                    href="#"
+                    uk-slideshow-item="previous"
+                  >
+                    <img src="./images/icon-previous.svg" alt="prev" />
+                  </a>
+                  <a
+                    class="uk-position-center-right uk-position-small"
+                    href="#"
+                    uk-slideshow-item="next"
+                  >
+                    <img src="./images/icon-next.svg" alt="next" />
+                  </a>
+                </div>
+                <div class="product-image-hero">
+                  <ul class="uk-slideshow-items">
+                    <li>
+                      <a onclick="showSlide(0)" href="#modal-center" uk-toggle>
+                        <img
+                          src="./images/image-product-1.jpg"
+                          alt="product 1"
+                          uk-cover
+                        />
+                      </a>
+                    </li>
+                    <li>
+                      <a onclick="showSlide(1)" href="#modal-center" uk-toggle>
+                        <img
+                          src="./images/image-product-2.jpg"
+                          alt="product 2"
+                          uk-cover
+                        />
+                      </a>
+                    </li>
+                    <li>
+                      <a onclick="showSlide(2)" href="#modal-center" uk-toggle>
+                        <img
+                          src="./images/image-product-3.jpg"
+                          alt="product 3"
+                          uk-cover
+                        />
+                      </a>
+                    </li>
+                    <li>
+                      <a onclick="showSlide(3)" href="#modal-center" uk-toggle>
+                        <img
+                          src="./images/image-product-4.jpg"
+                          alt="product 4"
+                          uk-cover
+                        />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                class="uk-visible@m product-image-thumbnail uk-slideshow-nav"
+              >
+                <div>
+                  <div uk-slideshow-item="0">
+                    <img
+                      src="./images/image-product-1-thumbnail.jpg"
+                      alt="product 1 thumbnail"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div uk-slideshow-item="1">
+                    <img
+                      src="./images/image-product-2-thumbnail.jpg"
+                      alt="product 2 thumbnail"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div uk-slideshow-item="2">
+                    <img
+                      src="./images/image-product-3-thumbnail.jpg"
+                      alt="product 3 thumbnail"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div uk-slideshow-item="3">
+                    <img
+                      src="./images/image-product-4-thumbnail.jpg"
+                      alt="product 4 thumbnail"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="uk-width-1-2@m uk-flex">
+            <div class="product-detail">
+              <span class="product-brand uk-text-primary">Sneaker Company</span>
+              <h1>Fall Limited Edition Sneakers</h1>
+              <p class="product-description">
+                These low-profile sneakers are your perfect casual wear
+                companion. Featuring a durable rubber outer sole, they'll
+                withstand everything the weather can offer.
+              </p>
+
+              <div class="product-price-container">
+                <div>
+                  <h2 class="product-price">$125.00</h2>
+                  <span class="product-discount uk-text-primary">50%</span>
+                </div>
+                <span class="product-previous-price">$250.00</span>
+              </div>
+
+              <div class="uk-grid uk-grid-small product-cta">
+                <div class="uk-width-1-1 uk-width-auto@m">
+                  <div class="uk-button-group button-qty uk-width-1-1">
+                    <button
+                      onclick="updateQty(-1)"
+                      class="uk-button uk-button-default min"
+                    >
+                      <span>-</span>
+                    </button>
+                    <button
+                      class="uk-button uk-button-default qty uk-positon-relative"
+                    >
+                      <span id="product-qty" class="uk-position-center">0</span>
+                    </button>
+                    <button
+                      onclick="updateQty(1)"
+                      class="uk-button uk-button-default plus"
+                    >
+                      <span>+</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="uk-width-expand@m">
+                  <button
+                    onclick="addToCart(1)"
+                    class="uk-button uk-width-1-1 uk-button-primary"
+                  >
+                    <img src="./images/icon-cart.svg" alt="" />
+                    Add to cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="modal-center" class="uk-flex-top lightbox" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+          <div class="uk-grid uk-flex-center">
+            <div class="uk-width-1-1@m uk-position-relative">
+              <img
+                class="uk-modal-close close-btn"
+                src="./images/icon-close.svg"
+                alt="close"
+              />
+              <div
+                id="slideshow-lightbox"
+                uk-slideshow="animation: push; autoplay-interval: 5000; ratio: 1:1;"
+                class="product-image"
+              >
+                <div class="uk-position-relative">
+                  <div class="nav-slider">
+                    <a
+                      class="uk-position-center-left uk-position-small"
+                      href="#"
+                      uk-slideshow-item="previous"
+                    >
+                      <img src="./images/icon-previous.svg" alt="prev" />
+                    </a>
+                    <a
+                      class="uk-position-center-right uk-position-small"
+                      href="#"
+                      uk-slideshow-item="next"
+                    >
+                      <img src="./images/icon-next.svg" alt="next" />
+                    </a>
+                  </div>
+                  <div class="product-image-hero">
+                    <ul class="uk-slideshow-items">
+                      <li>
+                        <a href="#modal-center" uk-toggle>
+                          <img
+                            src="./images/image-product-1.jpg"
+                            alt="product 1"
+                            uk-cover
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#modal-center" uk-toggle>
+                          <img
+                            src="./images/image-product-2.jpg"
+                            alt="product 2"
+                            uk-cover
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#modal-center" uk-toggle>
+                          <img
+                            src="./images/image-product-3.jpg"
+                            alt="product 3"
+                            uk-cover
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#modal-center" uk-toggle>
+                          <img
+                            src="./images/image-product-4.jpg"
+                            alt="product 4"
+                            uk-cover
+                          />
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="product-image-thumbnail uk-slideshow-nav">
+                  <div>
+                    <div uk-slideshow-item="0">
+                      <img
+                        src="./images/image-product-1-thumbnail.jpg"
+                        alt="product 1 thumbnail"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div uk-slideshow-item="1">
+                      <img
+                        src="./images/image-product-2-thumbnail.jpg"
+                        alt="product 2 thumbnail"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div uk-slideshow-item="2">
+                      <img
+                        src="./images/image-product-3-thumbnail.jpg"
+                        alt="product 3 thumbnail"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div uk-slideshow-item="3">
+                      <img
+                        src="./images/image-product-4-thumbnail.jpg"
+                        alt="product 4 thumbnail"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.0/dist/sweetalert2.all.min.js"></script>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.11.1/dist/js/uikit-icons.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
