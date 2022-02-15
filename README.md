@@ -20,7 +20,7 @@ This is a solution to the [E-commerce product page challenge on Frontend Mentor]
 
 ### Links
 
-- Live Site URL: [Netlify](https://frosty-mcnulty-2e3a48.netlify.app/)
+- Live Site URL: [Netlify](https://naughty-perlman-157a84.netlify.app/)
 
 ## My process
 
